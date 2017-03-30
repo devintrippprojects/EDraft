@@ -1,0 +1,6 @@
+framework module Pods_EDraft {
+  umbrella header "Pods-EDraft-umbrella.h"
+
+  export *
+  module * { export * }
+}
