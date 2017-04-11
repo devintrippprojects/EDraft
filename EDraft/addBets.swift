@@ -34,6 +34,11 @@ class addBets: UIViewController, UITextFieldDelegate {
     var betNumber: String!
     var bets: Int = 0
     
+    var userHasNoMoney: Bool?
+    
+    let que: DispatchQueue = DispatchQueue(label: "new")
+    
+    let getData = GatherData()
     
     
     
@@ -90,10 +95,10 @@ class addBets: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    
     @IBAction func submitData(_ sender: Any) {
         // get the userName to tell who is doing the bet and set it as a key
-    
-        sleep(4)
+
         
         if let usernamee = self.userName {
 
@@ -105,10 +110,52 @@ class addBets: UIViewController, UITextFieldDelegate {
             if self.teamOneBet?.text != "" {
                 if let betOne = Int((self.teamOneBet?.text)!){
                     
-                    takeAwayMoney(String(betOne))
-                    values["Bet"] = String(betOne)
-                    values["ForTeam"] = teamOneLabelAdd.text
-                    values["OpposingTeam"] = teamTwoLabelAdd.text
+                    takeAwayMoney(String(betOne), completion: { (result) in
+                        if(self.userHasNoMoney == true){
+                            let alertController = UIAlertController(title: "Error", message: "Not Enough Money", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                            alertController.addAction(okButton)
+                            self.present(alertController, animated: true, completion: nil)
+                            return
+                        } else {
+                            values["Bet"] = String(betOne)
+                            values["ForTeam"] = self.teamOneLabelAdd.text
+                            values["OpposingTeam"] = self.teamTwoLabelAdd.text
+                            self.currentUser?.getTokenWithCompletion({ (token, error) in
+                                if(error == nil) {
+                                    print("success")
+                                    useRef.setValue(values) { (error, ref) -> Void in
+                                        if (error == nil) {
+                                            print("success")
+                                            sleep(2)
+                                            self.navigationController?.popViewController(animated: true)
+                                        } else {
+                                            print(String(describing: error))
+                                        }
+                                        
+                                        
+                                    }
+                                } else {
+                                    print("didn't get em coach")
+                                }
+                                
+                                //BetView.load()
+                                
+//                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                                let betView = storyboard.instantiateViewController(withIdentifier: "betView")
+//
+//                                self.navigationController?.popToViewController(betView, animated: true)
+                            })
+                            
+ 
+                                
+                                
+                                
+                            
+                        }
+                        
+                    })
+                
                 } else {
                     //Make an alert controller that tells the user he needs to enter in an Int
                     let alertController = UIAlertController(title: "Error", message: "Please enter in a number.", preferredStyle: .alert)
@@ -120,11 +167,45 @@ class addBets: UIViewController, UITextFieldDelegate {
                 
             } else if self.teamTwoBet?.text != "" {
                 if let betTwo = Int((self.teamTwoBet?.text)!){
-                    
-                    takeAwayMoney(String(betTwo))
-                    values["Bet"] = String(betTwo)
-                    values["ForTeam"] = teamTwoLabelAdd.text
-                    values["OpposingTeam"] = teamOneLabelAdd.text
+                    takeAwayMoney(String(betTwo), completion: {(result) in
+                        if (result == false) {
+                            let alertController = UIAlertController(title: "Error", message: "Not Enough Money", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                            alertController.addAction(okButton)
+                            self.present(alertController, animated: true, completion: nil)
+                            return
+                        } else {
+                            values["Bet"] = String(betTwo)
+                            values["ForTeam"] = self.teamTwoLabelAdd.text
+                            values["OpposingTeam"] = self.teamOneLabelAdd.text
+                            self.currentUser?.getTokenWithCompletion({ (resulte) in
+                                
+                                useRef.setValue(values)
+                            })
+                                
+                                self.getData.getBetsFor(completion: { (rezy) in
+                                    
+                                    if rezy == true {
+                                        let sucController = UIAlertController(title: "Congrats", message: "You have made a bet for \(self.teamTwo) for \(betTwo) money's", preferredStyle: .alert)
+                                        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                        sucController.addAction(okButton)
+                                        self.present(sucController, animated: true, completion: { (rez) in
+                                            
+                                                     self.navigationController?.popViewController(animated: true)
+                                            
+                                        })
+                                    } else {
+                                        print("Something Went wrong")
+                                    }
+                                    
+                                })
+                                
+                        
+                                
+                        
+                        }
+                    })
+
                 } else {
                     let alertController = UIAlertController(title: "Error", message: "Please enter in a number.", preferredStyle: .alert)
                     let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -140,10 +221,11 @@ class addBets: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-        
-        
+        /*
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
         //self.betRef.child("Bets").setValue(self.userName)
-        if let worked = currentUser?.getTokenWithCompletion() {
+                
+        if let worked = self.currentUser?.getTokenWithCompletion() {
             
             useRef.setValue(values)
             /*
@@ -163,13 +245,15 @@ class addBets: UIViewController, UITextFieldDelegate {
             
          sleep(1)
          self.navigationController?.popViewController(animated: true)
-            
+            }
+ */
         }
+ 
         
         
     }
     
-    func takeAwayMoney(_ howMuch: String){
+    func takeAwayMoney(_ howMuch: String, completion: @escaping(_ s: Bool) -> Void){
         if let notMuch = Int(howMuch) {
             
             
@@ -183,13 +267,17 @@ class addBets: UIViewController, UITextFieldDelegate {
                 if let conMoney = Int(money) {
                     var conMoreMoney = conMoney
                     if conMoreMoney < notMuch {
-                        print(" sorry bitch")
+                        print("User does not have enough money")
+                        self.userHasNoMoney = true
+                        completion(false)
                         return
                     } else {
                         conMoreMoney -= notMuch
                         let value = ["money": String(conMoreMoney)]
                         //update the users money
                         self.ref.child("User").child(userID!).updateChildValues(value)
+                        self.userHasNoMoney = false
+                        completion(true)
                     }
                     
                 }

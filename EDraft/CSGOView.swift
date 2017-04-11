@@ -11,7 +11,7 @@ import Foundation
 import Firebase
 
 
-class CSGOView: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class CSGOView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableViewView: UITableView!
     
     var teams: [String] = []

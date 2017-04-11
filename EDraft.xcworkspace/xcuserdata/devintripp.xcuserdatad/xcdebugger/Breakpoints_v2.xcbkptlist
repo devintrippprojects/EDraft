@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/ViewController.swift"
-            timestampString = "512261008.752956"
+            timestampString = "512984494.443912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "createAccount(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/ViewController.swift"
-            timestampString = "512261008.752956"
+            timestampString = "512984494.443912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "createAccount(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/ViewController.swift"
-            timestampString = "512261008.752956"
+            timestampString = "512984494.443912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "createAccount(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/LobbyView.swift"
-            timestampString = "510876573.178909"
+            timestampString = "512715367.457834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
             landmarkName = "LobbyView"
             landmarkType = "3">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512545690.479618"
+            timestampString = "512874037.094816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "BetView"
             landmarkType = "3">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512545690.479618"
+            timestampString = "512874037.094816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "BetView"
             landmarkType = "3">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/addBets.swift"
-            timestampString = "512545690.479618"
+            timestampString = "513576633.340601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "submitData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
+            timestampString = "513570836.070419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/addBets.swift"
-            timestampString = "512545690.479618"
+            timestampString = "512765379.975956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "submitData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/addBets.swift"
-            timestampString = "512545690.479618"
+            timestampString = "512765379.975956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "submitData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/addBets.swift"
-            timestampString = "512545690.479618"
+            timestampString = "513576633.340601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "submitData(_:)"
             landmarkType = "7">
             <Locations>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/addBets.swift"
-            timestampString = "512545690.479618"
+            timestampString = "512765379.975956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "textFieldShouldReturn(userText:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
+            timestampString = "513570836.070419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
             <Locations>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
+            timestampString = "513570836.070419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "takeAwayMoney(_:index:completion:)"
             landmarkType = "7">
             <Locations>
@@ -490,171 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
+            timestampString = "513570836.070419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
-            landmarkName = "takeAwayMoney(_:index:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "takeAwayMoney(_:index:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "takeAwayMoney(_:index:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "updateBet(_:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(updateBet (Swift.Int, completion : (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "EDraft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512536631.816809"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
-                  offsetFromSymbolStart = "1848">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(updateBet (Swift.Int, completion : (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "EDraft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512536631.820257"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "177"
-                  endingLineNumber = "177"
-                  offsetFromSymbolStart = "1012">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "updateBet(_:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(updateBet (Swift.Int, completion : (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "EDraft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512536430.402557"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "1436">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(updateBet (Swift.Int, completion : (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "EDraft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512536430.405987"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "updateBet(_:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -665,46 +505,141 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EDraft/BetView.swift"
-            timestampString = "512547074.323239"
+            filePath = "EDraft/addBets.swift"
+            timestampString = "513576633.340601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "takeAwayMoney(_:index:completion:)"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "takeAwayMoney(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EDraft.addBets.takeAwayMoney (Swift.String) -&gt; ()"
+                  moduleName = "EDraft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/addBets.swift"
+                  timestampString = "512552145.814964"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "944">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EDraft.addBets.(takeAwayMoney (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "EDraft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/addBets.swift"
+                  timestampString = "512552145.818612"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "2532">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EDraft.addBets.(takeAwayMoney (Swift.String) -&gt; ()).(closure #2)"
+                  moduleName = "EDraft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/addBets.swift"
+                  timestampString = "512552145.82252"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EDraft/addBets.swift"
+            timestampString = "513576633.340601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "submitData(_:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(takeAwayMoney (Swift.String, index : Swift.Int, completion : (Swift.Bool) -&gt; ()) -&gt; ()).(closure #1)"
+                  symbolName = "EDraft.addBets.submitData (Any) -&gt; ()"
                   moduleName = "EDraft"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512537367.937249"
+                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/addBets.swift"
+                  timestampString = "512609983.37979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "349"
-                  endingLineNumber = "349"
-                  offsetFromSymbolStart = "2516">
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1868">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "EDraft.BetView.(takeAwayMoney (Swift.String, index : Swift.Int, completion : (Swift.Bool) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "EDraft.addBets.(submitData (Any) -&gt; ()).(closure #1)"
                   moduleName = "EDraft"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/BetView.swift"
-                  timestampString = "512537367.940714"
+                  urlString = "file:///Users/devintripp/Desktop/EDraft/EDraft/addBets.swift"
+                  timestampString = "512609983.383593"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "350"
-                  endingLineNumber = "350"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EDraft/BetView.swift"
+            timestampString = "513570836.070419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EDraft/GatherData.swift"
+            timestampString = "513145671.508164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "getUpcomingBetsForUser(theUsersName:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

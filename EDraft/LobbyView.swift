@@ -8,12 +8,12 @@
 
 import UIKit
 import Foundation
+import Firebase
 
 
 class LobbyView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
 }

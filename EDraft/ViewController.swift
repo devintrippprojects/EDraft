@@ -6,6 +6,29 @@
 //  Copyright © 2016 Devin Tripp. All rights reserved.
 //
 
+//UP NEXT
+/*
+ delete all the bets before getting the bets //Done
+ maybe find a new way to store the bets so that they always show in the same positions //Done using OBJECTS
+ make the table cell fade away when its deleted instead of disapearing //Halfway done
+ 
+ 
+ convert code into mvc // LITTLE BIT
+ watch swift standford videos // Watched: 1, half of 2
+ in the upcoming view change the bets //Done!
+ 
+ 
+ don't allow the user to make a bet with himself that way there are no upcoming bet logic errors
+ fix the logic error that does not display all the bets after making a bet
+ 
+ after making the upcoming bets work make the logic for the times in the bets
+ add the time and the dates for each bet when a bet is made then check that time in upcoming
+ 
+ 
+ 
+ 
+ */
+
 import UIKit
 import Firebase
 

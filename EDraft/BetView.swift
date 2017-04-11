@@ -16,12 +16,11 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var teamOne: UILabel!
     @IBOutlet weak var teamTwo: UILabel!
     let datRef = FIRDatabase.database().reference(fromURL: "https://edraft-77b47.firebaseio.com/")
-    var userName = String()
-    var userNames: [String] = []
-    var amountBets: [String] = []
-    var tieBetToUser: [String] = []
-    var opposingUserNames: String?
-    var userHasMoney = true
+    
+    
+    var userMoney = String()
+    
+    let getData = GatherData()
     
     var testies: String?
     
@@ -31,16 +30,26 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     let screenSize: CGRect = UIScreen.main.bounds
     
     let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 60, width: UIScreen.main.bounds.width, height: 50))
-    let navItem = UINavigationItem(title: "Place Bet")
+    var navItem = UINavigationItem(title: "Money: ")
         
     
     let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: nil, action: #selector(sayHello(sender:)))
     
     
     let backItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(goBack(sender:)))
-    
-    var checkIfRanAlready = true
+
+
     override func viewWillAppear(_ animated: Bool) {
+        self.getData.betObjects.removeAll()
+        self.getData.getBetsFor(completion: { (result) in
+            if result == true {
+                //show the spinning wheel thing
+                self.tableView.reloadData()
+            } else {
+                // error
+            }
+            
+        })
     }
     
     override func viewDidLoad() {
@@ -55,138 +64,87 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
         
         teamOne.text = teamTOne
         teamTwo.text = teamTTwo
-        getBetsFor(completion: { (result: Bool?) in
-            guard let resultGot = result else {
-                return
+        
+        
+        /*
+        getData.getBetsFor(completion: { (result) in
+            if result == true {
+                
+            
+                
+            
+                self.tableView.reloadData()
+            } else {
+                
             }
             
         })
+        */
         
+        getData.getMoneyFromUser(username: self.getData.userName, completion: { (money) in
+            
+            if money == true {
+                let usermoney = String(self.getData.userMoney)
+                //update the UI
+                self.navItem.title = "$" + usermoney
+                print(self.getData.userMoney)
+            } else {
+                print("no money found")
+            }
+            
+            
+            
+        })
         
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, shouldUpdateFocusIn context: UITableViewFocusUpdateContext) -> Bool {
         return true
     }
     
     
-    func checkForNo(_ index: Int) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        datRef.child("User").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            self.userName = username
-            
-            // ...
-            
-            
-            self.datRef.child("Bets").observe(.childAdded, with: { snapshot in
-                //
-                // this is the unique identifier of the bet.  eg, -Kfx81GvUxoHpmmMwJ9P
-                
-                let betId = snapshot.key as String
-                guard let dict = snapshot.value as? [String: AnyHashable] else {
-                    print("failed to get dictionary from Bets.\(self.userName)")
-                    return
-                }
-               
-                
-                
-                
-                
-                // do something with the above information!
-                
-            })
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
     
-    func getBetsFor(completion: @escaping(_ some: Bool) -> Void) {
-        
+    
+    func updateBet(_ index: Int, completion: @escaping (_ something: Bool) -> Void) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         datRef.child("User").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            self.userName = username
-            
+            let username = value?["username"] as? String
+            self.getData.userName = username!
             // ...
             
             
             self.datRef.child("Bets").observe(.childAdded, with: { snapshot in
                 //
                 // this is the unique identifier of the bet.  eg, -Kfx81GvUxoHpmmMwJ9P
-                
-                let betId = snapshot.key as String
                 guard let dict = snapshot.value as? [String: AnyHashable] else {
-                    print("failed to get dictionary from Bets.\(self.userName)")
+                    print("failed to get dictionary from Bets.\(self.getData.userName)")
                     return
                 }
-                if let show = dict["Show"] as? String {
+                let values = ["OpposingUsername": self.getData.userName,"Show": "no"]
+                //var val = self.getData.betObjects[index]
+                //val.opposingUserName = self.getData.userName
+            self.datRef.child("Bets").child(self.getData.tieBetToUser[index]).observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    let bet = dict["Bet"] as! String
-                    let usernama = dict["Username"] as! String
-                    _ = dict["ForTeam"] as? String
-                
-                    if show == "yes" {
-                        self.amountBets.append(bet)
-                        self.userNames.append(usernama)
-                        self.tieBetToUser.append(betId)
-                        self.tableView.reloadData()
-                        completion(true)
-                    } else {
+                    let anothaValue = snapshot.value as? NSDictionary
+                    let user = anothaValue?["Username"] as? String
+                    
+                    if user == self.getData.userName {
+                        // let the user know he cannot bet his own bet
                         completion(false)
-                    }
-                }
-                
-                
-                
-                
-                // do something with the above information!
-                
-            })
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    
-    }
-    
-    func updateBet(_ index: Int, completion: @escaping (_ something: Bool?) -> Void) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        datRef.child("User").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            // ...
-            
-            
-            self.datRef.child("Bets").observe(.childAdded, with: { snapshot in
-                //
-                // this is the unique identifier of the bet.  eg, -Kfx81GvUxoHpmmMwJ9P
-                guard let dict = snapshot.value as? [String: AnyHashable] else {
-                    print("failed to get dictionary from Bets.\(self.userName)")
-                    return
-                }
-                let values = ["OpposingUsername": self.userName,"Show": "no"]
-                
-                
-                self.datRef.child("Bets").child(self.tieBetToUser[index]).updateChildValues(values)
-                let checkTheCodeWentHere = "Success"
-                completion(true)
-                // now get the opposing username which is just the Username registered to that specific bet
-                /*
-                self.datRef.child("Bets").child(self.tieBetToUser[index]).observeSingleEvent(of: .value, with: { snapshot in
-                    let thisValue = snapshot.value as? NSDictionary
-                    if let username = thisValue?["Username"] as? String {
-                        self.opposingUserNames = username
-                        completion(true)
                     } else {
-                        completion(false)
+                        self.datRef.child("Bets").child(self.getData.tieBetToUser[index]).updateChildValues(values)
+                        completion(true)
                     }
+                    
                     
                 })
- */
+                
+                
  
             })
             
@@ -198,7 +156,7 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     }
     
-    func getOpoosingUserNames(_ username: String,_ index: Int, completion: @escaping (_ result: Bool?) -> Void ) {
+    func getOpoosingUserNames(_ username: String,_ index: Int, completion: @escaping (_ result: Bool) -> Void ) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         datRef.child("User").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -206,11 +164,14 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
             let username = value?["username"] as? String ?? ""
             
             
-            self.datRef.child("Bets").child(self.tieBetToUser[index]).observeSingleEvent(of: .value, with: { snapshot in
+            self.datRef.child("Bets").child(self.getData.tieBetToUser[index]).observeSingleEvent(of: .value, with: { snapshot in
                 let thisValue = snapshot.value as? NSDictionary
-                if let username = thisValue?["Username"] as? String {
-                    self.opposingUserNames = username
+                if let thisUserName = thisValue?["Username"] as? String {
+                    
+                    self.getData.opposingUserName  = thisUserName
                     completion(true)
+
+                
                 } else {
                     completion(false)
                 }
@@ -228,14 +189,16 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
         //if makeEmpty == true {
         //    return 0
         //} else {
-            return amountBets.count
+        print(self.getData.betObjects.count)
+            return self.getData.betObjects.count
         //}
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellB", for: indexPath) as! CellB
-        cell.userNameLabel?.text = userNames[indexPath.row]
-        cell.amountOfBet?.text = amountBets[indexPath.row]
+        print(self.getData.betObjects[indexPath.row].userName)
+        cell.userNameLabel?.text = getData.betObjects[indexPath.row].userName
+        cell.amountOfBet?.text = getData.betObjects[indexPath.row].betAmount
         
         
         return cell
@@ -244,7 +207,7 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "Accept Bet", message: "Match the bet of " + amountBets[indexPath.row], preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Accept Bet", message: "Match the bet of " + getData.amountBets[indexPath.row], preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: "No", style: .default, handler: { (action) -> Void in
             print("Ok button tapped")
@@ -256,10 +219,79 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
  
             self.present(waitController, animated: true, completion: nil)
             //take away the usersMoney
-            self.takeAwayMoney(self.amountBets[indexPath.row],index: indexPath.row, completion: { (result: Bool?) in
+            self.takeAwayMoney(self.getData.amountBets[indexPath.row],index: indexPath.row, completion: { (result) in
                 
-                guard let boolResult = result else {
-                    return
+                if result == true {
+                    self.updateBet(indexPath.row, completion: { (result) in
+                        
+                        
+                        if result == true {
+                            self.getOpoosingUserNames(self.getData.userName, indexPath.row, completion: { (anothaResult) in
+                                
+                                if anothaResult == true {
+                                    self.dismiss(animated: true, completion: {
+                                        let successController = UIAlertController(title: "Success", message: "You have made a bet with " + self.getData.opposingUserName, preferredStyle: .alert)
+                                        let okButt = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                        successController.addAction(okButt)
+                                        self.present(successController, animated: true, completion: nil)
+                                        //lastly delete the opposing UserName
+                                        
+                                        let pathIndex = IndexPath(item: indexPath.row, section: 0)
+                                        self.getData.betObjects.remove(at: indexPath.row)
+                                        self.tableView.deleteRows(at: [pathIndex], with: .fade)
+                                        self.tableView.reloadData()
+                                        print("Second")
+                                    })
+                                    
+                                    self.getData.getMoneyFromUser(username: self.getData.userName, completion: { (money) in
+                                        
+                                        if money == true {
+                                            self.userMoney = String(self.getData.userMoney)
+                                            //update the UI
+                                            self.navItem.title = "$" + self.userMoney
+                                            
+                                        
+                                            
+                                            print(self.userMoney)
+                                        } else {
+                                            print("no money found")
+                                        }
+                                        
+                                        
+                                        
+                                    })
+                                } else {
+                                    
+                                }
+                                //wait for the first view to load in case it uploads to fast
+                                
+                                
+                            })
+                            
+                        } else {
+                            self.dismiss(animated: true, completion: {
+                                let cannotBet = UIAlertController(title: "Failed", message: "You cannot bet with yourself dummy", preferredStyle: .alert)
+                                let okButt = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                cannotBet.addAction(okButt)
+                                self.present(cannotBet, animated: true, completion: nil)
+                            })
+                        }
+                        
+                        
+                    })
+                    
+                    
+                    
+                } else {
+                    // user doesn't have money
+                    //display a alert that lets the user know hes broke
+                    print("this should print once")
+                    self.dismiss(animated: true, completion: {
+                        let brokeController = UIAlertController(title: "Failed", message: "Reason: You don't have enough money!", preferredStyle: .alert)
+                        let okButt = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                        brokeController.addAction(okButt)
+                        self.present(brokeController, animated: true, completion: nil)
+                    })
                 }
                 var getResult = ""
                 print("You have taken away the users money")
@@ -268,41 +300,7 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     //let delayInSeconds = 3.0 // 1
                     //DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) { // 2
             })
-            if (self.userHasMoney == true) {
-            self.updateBet(indexPath.row, completion: { (result: Bool?) in
-                
-                guard let checkRes = result else {
-                    return
-                }
-                
-                
-            })
             
-            self.getOpoosingUserNames(self.userName, indexPath.row, completion: { (anothaResult: Bool?) in
-                
-                guard let value = anothaResult else {
-                    return print("didn't work")
-                }
-                        //wait for the first view to load in case it uploads to fast
-                        sleep(1)
-                        self.dismiss(animated: true, completion: nil)
-                        let successController = UIAlertController(title: "Success", message: "You have made a bet with " + self.opposingUserNames!, preferredStyle: .alert)
-                        let okButt = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                        successController.addAction(okButt)
-                        self.present(successController, animated: true, completion: nil)
-                        //lastly delete the opposing UserName
-                        self.amountBets.remove(at: indexPath.row)
-                        self.tableView.reloadData()
-                        print("Second")
-                
-            })
-            } else {
-                //display a alert that lets the user know hes broke
-                let brokeController = UIAlertController(title: "Failed", message: "Reason: You don't have enough money!", preferredStyle: .alert)
-                let okButt = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                brokeController.addAction(okButt)
-                self.present(brokeController, animated: true, completion: nil)
-            }
         
         return
         })
@@ -318,7 +316,7 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCellEditingStyle.delete) {
-            self.amountBets.remove(at: indexPath.row)
+            self.getData.betObjects.remove(at: indexPath.row)
         }
     }
     
@@ -333,7 +331,6 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
             if let destination = segue.destination as? addBets {
                 
                 destination.teamOne = self.teamOne.text!
-        
                 destination.teamTwo = self.teamTwo.text!
             }
         }
@@ -359,7 +356,6 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
                     if conMoreMoney < notMuch {
                         
                         print(" You don't have enough money")
-                        self.userHasMoney = false
                         completion(false)
                         return
                     } else {
@@ -369,19 +365,6 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
                         //update the users money
                         self.datRef.child("User").child(userID!).updateChildValues(values)
                         completion(true)
-                        /*
-                        self.updateBet(index, completion: { (result: Bool?) in
-                            guard let checkResult = result else {
-                                return print("Failed to get result")
-                            }
-                            if checkResult == true {
-                                completion(true)
-                            } else {
-                                completion(false)
-                            }
-                        })
- */
-                        
                     }
                     
                 }
@@ -399,7 +382,8 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
             // Get user value
             let value = snapshot.value as? NSDictionary
             let username = value?["username"] as? String ?? ""
-            self.userName = username
+            
+            self.getData.userName = username
             useruser = username
             
             // ...
