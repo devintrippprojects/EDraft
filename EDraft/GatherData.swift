@@ -84,6 +84,9 @@ class GatherData {
     var amountUpcomingBets: [String] = []
     var userNamesUpcoming: [String] = []
     var tieBetToUserUpcoming: [String] = []
+    var firstTeams: [String] = []
+    var secondTeams: [String] = []
+    
     
     //objects
     var betObjects: [Bet] = []
@@ -120,6 +123,7 @@ class GatherData {
         let userID = FIRAuth.auth()?.currentUser?.uid
         databaseReference.child("User").observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
+            let usernameOfUser = value?["username"] as? String
             //let username = value?["username"] as? String ?? ""
             //self.userName = username
         self.databaseReference.child("Bets").observe(.childAdded, with: { snapshot in
@@ -135,15 +139,20 @@ class GatherData {
                 let opposingUserName = value?["OpposingUsername"] as? String
                 
                 if show == "no" {
-                    if mainBetUser == username || opposingUserName == username {
-                        if mainBetUser == username && opposingUserName == username {
-                            self.amountUpcomingBets.append(mainBetUser!)
+                    if mainBetUser == usernameOfUser || opposingUserName == usernameOfUser {
+                        if mainBetUser == usernameOfUser && opposingUserName == usernameOfUser {
+                            //self.amountUpcomingBets.append(mainBetUser!)
                             //let user = User(username: mainBetUser, bettotal: betAmount)
                             
                         } else if opposingUserName == username {
-                            self.amountUpcomingBets.append(opposingUserName!)
+                            self.upcomingBetObjects.append(Bet(betamount: betAmount!, betID: betID, username: mainBetUser!, opposingUserName: opposingUserName!, userTeam: yourTeam!, opposingTeam: theirTeam!))
+
+                            //self.amountUpcomingBets.append(opposingUserName!)
+                            //self.secondTeams.append(theirTeam!)
+                            
                         } else if mainBetUser == username {
-                            self.amountUpcomingBets.append(opposingUserName!)
+                            //self.amountUpcomingBets.append(opposingUserName!)
+                            //self.firstTeams.append(yourTeam!)
                         }
                     }
                 }
@@ -162,6 +171,64 @@ class GatherData {
         })
     
     
+    }
+    
+    
+    func getBetsForUserNameRecent(username: String, completion: @escaping(_ some: Bool) -> Void) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        databaseReference.child("User").observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let usernameOfUser = value?["username"] as? String
+            //let username = value?["username"] as? String ?? ""
+            //self.userName = username
+            self.databaseReference.child("Bets").observe(.childAdded, with: { snapshot in
+                
+                let betID = snapshot.key as String
+                self.databaseReference.child("Bets").child(betID).observe(.value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let show = value?["Show"] as? String
+                    let betAmount = value?["Bet"] as? String
+                    let yourTeam = value?["ForTeam"] as? String
+                    let theirTeam = value?["OpposingTeam"] as? String
+                    let mainBetUser = value?["Username"] as? String
+                    let opposingUserName = value?["OpposingUsername"] as? String
+                    guard let time = value?["Time"] as? String else {
+                        return print("crap")
+                    }
+                    
+                    if show == "no" {
+                        if mainBetUser == usernameOfUser || opposingUserName == usernameOfUser {
+                            if mainBetUser == usernameOfUser && opposingUserName == usernameOfUser {
+                                //self.amountUpcomingBets.append(mainBetUser!)
+                                //let user = User(username: mainBetUser, bettotal: betAmount)
+                                
+                            } else if opposingUserName == username {
+                                self.upcomingBetObjects.append(Bet(betamount: betAmount!, betID: betID, username: mainBetUser!, opposingUserName: opposingUserName!, userTeam: yourTeam!, opposingTeam: theirTeam!))
+                                
+                                //self.amountUpcomingBets.append(opposingUserName!)
+                                //self.secondTeams.append(theirTeam!)
+                                
+                            } else if mainBetUser == username {
+                                //self.amountUpcomingBets.append(opposingUserName!)
+                                //self.firstTeams.append(yourTeam!)
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                })
+                
+                
+                completion(true)
+                
+            })
+            
+        })
+        
+        
     }
 
     

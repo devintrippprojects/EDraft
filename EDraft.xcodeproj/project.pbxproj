@@ -10,6 +10,8 @@
 		61CE385B40AEA9D6BA7C369A /* Pods_EDraft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FE786835E7349DCFA6C34E /* Pods_EDraft.framework */; };
 		CF2B5E901E8F563F00A98DA2 /* CellC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2B5E8F1E8F563D00A98DA2 /* CellC.swift */; };
 		CF2B5E921E92CB3F00A98DA2 /* UpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2B5E911E92CB3D00A98DA2 /* UpcomingView.swift */; };
+		CF37CA521EA30DB300C918E0 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37CA511EA30DB300C918E0 /* RecentViewController.swift */; };
+		CF37CA541EA30F1900C918E0 /* CellD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF37CA531EA30F1900C918E0 /* CellD.swift */; };
 		CF4460301E7CA7200034748F /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF44602F1E7CA7200034748F /* CustomCell.swift */; };
 		CF4460321E80D1470034748F /* BetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4460311E80D1470034748F /* BetView.swift */; };
 		CF4CAE981E785D3800C39252 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4CAE971E785D3800C39252 /* DataController.swift */; };
@@ -34,6 +36,8 @@
 		9F860A3C93E04A1E7D2F0DFD /* Pods-EDraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EDraft.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EDraft/Pods-EDraft.debug.xcconfig"; sourceTree = "<group>"; };
 		CF2B5E8F1E8F563D00A98DA2 /* CellC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellC.swift; sourceTree = "<group>"; };
 		CF2B5E911E92CB3D00A98DA2 /* UpcomingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingView.swift; sourceTree = "<group>"; };
+		CF37CA511EA30DB300C918E0 /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		CF37CA531EA30F1900C918E0 /* CellD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellD.swift; sourceTree = "<group>"; };
 		CF44602F1E7CA7200034748F /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		CF4460311E80D1470034748F /* BetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetView.swift; sourceTree = "<group>"; };
 		CF4CAE971E785D3800C39252 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -115,9 +119,11 @@
 				CF79A26A1E708C5600C359F1 /* UserClass.swift */,
 				CF4CAE971E785D3800C39252 /* DataController.swift */,
 				CF79A26E1E72466900C359F1 /* Main.storyboard */,
+				CF37CA511EA30DB300C918E0 /* RecentViewController.swift */,
 				CF2B5E911E92CB3D00A98DA2 /* UpcomingView.swift */,
 				CF62BB461E8519A200AB6852 /* CellB.swift */,
 				CF2B5E8F1E8F563D00A98DA2 /* CellC.swift */,
+				CF37CA531EA30F1900C918E0 /* CellD.swift */,
 				CF4460311E80D1470034748F /* BetView.swift */,
 				CF62BB481E8536E400AB6852 /* addBets.swift */,
 				CF44602F1E7CA7200034748F /* CustomCell.swift */,
@@ -255,11 +261,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF37CA541EA30F1900C918E0 /* CellD.swift in Sources */,
 				CF62BB471E8519A200AB6852 /* CellB.swift in Sources */,
 				CF79A2771E73C50D00C359F1 /* GatherData.swift in Sources */,
 				CF2B5E921E92CB3F00A98DA2 /* UpcomingView.swift in Sources */,
 				CF79A26B1E708C5600C359F1 /* UserClass.swift in Sources */,
 				CF2B5E901E8F563F00A98DA2 /* CellC.swift in Sources */,
+				CF37CA521EA30DB300C918E0 /* RecentViewController.swift in Sources */,
 				CF4460301E7CA7200034748F /* CustomCell.swift in Sources */,
 				CF4460321E80D1470034748F /* BetView.swift in Sources */,
 				CF67AFC31DF3EC22008E24C6 /* ViewController.swift in Sources */,

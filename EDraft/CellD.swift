@@ -1,16 +1,20 @@
 //
-//  CellC.swift
+//  CellD.swift
 //  EDraft
 //
-//  Created by Devin Tripp on 3/31/17.
+//  Created by Devin Tripp on 4/15/17.
 //  Copyright © 2017 Devin Tripp. All rights reserved.
 //
 
 import UIKit
 
-class CellC: UITableViewCell {
-    @IBOutlet weak var test: UILabel!
-    @IBOutlet weak var money: UILabel!
+class CellD: UITableViewCell {
+    @IBOutlet weak var winOrLoseTwo: UILabel!
+    @IBOutlet weak var winOrLoseOne: UILabel!
+    @IBOutlet weak var secondTeamName: UILabel!
+    @IBOutlet weak var scoreOne: UILabel!
+    @IBOutlet weak var firstTeamName: UILabel!
+    @IBOutlet weak var scoreTwo: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

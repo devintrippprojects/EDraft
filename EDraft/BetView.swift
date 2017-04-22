@@ -41,6 +41,7 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     override func viewWillAppear(_ animated: Bool) {
         self.getData.betObjects.removeAll()
+        self.tableView.reloadData()
         self.getData.getBetsFor(completion: { (result) in
             if result == true {
                 //show the spinning wheel thing
@@ -239,7 +240,17 @@ class BetView: UIViewController, UITableViewDelegate, UITableViewDataSource{
                                         let pathIndex = IndexPath(item: indexPath.row, section: 0)
                                         self.getData.betObjects.remove(at: indexPath.row)
                                         self.tableView.deleteRows(at: [pathIndex], with: .fade)
+                                        self.getData.betObjects.removeAll()
                                         self.tableView.reloadData()
+                                        self.getData.getBetsFor(completion: { (result) in
+                                            if result == true {
+                                                //show the spinning wheel thing
+                                                self.tableView.reloadData()
+                                            } else {
+                                                // error
+                                            }
+                                            
+                                        })
                                         print("Second")
                                     })
                                     

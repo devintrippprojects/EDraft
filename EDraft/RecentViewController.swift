@@ -1,8 +1,8 @@
 //
-//  UpcomingView.swift
+//  RecentViewController.swift
 //  EDraft
 //
-//  Created by Devin Tripp on 4/3/17.
+//  Created by Devin Tripp on 4/15/17.
 //  Copyright © 2017 Devin Tripp. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import Firebase
 
 
 
-class UpcomingView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RecentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -34,14 +34,11 @@ class UpcomingView: UIViewController, UITableViewDelegate, UITableViewDataSource
     let datRef = FIRDatabase.database().reference(fromURL: "https://edraft-77b47.firebaseio.com/")
     
     
-    // arrays
-    var amountUpcomingBets: [String] = []
-    var userNamesUpcoming: [String] = []
-    var tieBetToUserUpcoming: [String] = []
     
     override func viewWillAppear(_ animated: Bool) {
-        self.getData.upcomingBetObjects.removeAll()
         self.tableView.reloadData()
+        
+        
         getData.getUpcomingBetsForUser(theUsersName: "", completion: { (resulte) in
             if resulte == true {
                 self.tableView.reloadData()
@@ -52,9 +49,14 @@ class UpcomingView: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         })
         
+        
         getTeamTimesStuff.getTeamsAndTimes()
         
         getTeamTimesStuff.getTeamScores()
+        
+        self.tableView.reloadData()
+        
+        
     }
     
     override func viewDidLoad() {
@@ -65,32 +67,31 @@ class UpcomingView: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     
     override func viewDidDisappear(_ animated: Bool) {
-        getData.upcomingBetObjects.removeAll()
+        
     }
     
     
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-     
-     for cell in tableView.visibleCells as [UITableViewCell] {
-     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        for cell in tableView.visibleCells as [UITableViewCell] {
+            
             let point = tableView.convert(cell.center, to: tableView.superview)
             cell.alpha = ((point.y * 100) / tableView.bounds.maxY) / 100
         }
-     }
- 
+    }
+    
     
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getData.upcomingBetObjects.count
+        return self.getTeamTimesStuff.finalTimes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CellC", for: indexPath) as! CellC
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CellD", for: indexPath) as! CellD
         
-        cell.test?.text = self.getData.upcomingBetObjects[indexPath.row].opposingUserName
-        cell.money?.text = self.getData.upcomingBetObjects[indexPath.row].betAmount
+        cell.firstTeamName?.text = getData.firstTeams[indexPath.row]
         
         cell.backgroundColor = UIColor.gray
         cell.alpha = 0

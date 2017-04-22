@@ -40,10 +40,16 @@ class addBets: UIViewController, UITextFieldDelegate {
     
     let getData = GatherData()
     
+    let getMoreData = DataController()
+    
     
     
     var teamOneBetAnotherOne: String!
     var teamOneBetAnotherTwo: String!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getMoreData.getTeamsAndTimes()
+    }
     
     
     override func viewDidLoad() {
@@ -106,7 +112,7 @@ class addBets: UIViewController, UITextFieldDelegate {
             let useRef = self.betRef.childByAutoId()
             
             
-            var values = ["Show":"yes","OpposingUsername": "","OpposingTeam":"","Username": usernamee,"Bet": "0", "ForTeam": ""]
+            var values = ["Show":"yes","OpposingUsername": "","OpposingTeam":"","Username": usernamee,"Bet": "0", "ForTeam": "", "Time": "", "FirstTeam": self.teamOneLabelAdd.text, "SecondTeam": self.teamTwoLabelAdd.text]
             if self.teamOneBet?.text != "" {
                 if let betOne = Int((self.teamOneBet?.text)!){
                     
@@ -118,9 +124,27 @@ class addBets: UIViewController, UITextFieldDelegate {
                             self.present(alertController, animated: true, completion: nil)
                             return
                         } else {
+                            var time = "fake"
+                            var count = 0
+                            for i in self.getMoreData.teams {
+                                if count % 2 == 0 {
+                                    if i == self.teamOneLabelAdd.text {
+                                        if count == 0 {
+                                            time = self.getMoreData.times[count]
+                                        } else {
+                                            time = self.getMoreData.times[count/2]
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                count += 1
+                            }
+
                             values["Bet"] = String(betOne)
                             values["ForTeam"] = self.teamOneLabelAdd.text
                             values["OpposingTeam"] = self.teamTwoLabelAdd.text
+                            values["Time"] = time
                             self.currentUser?.getTokenWithCompletion({ (token, error) in
                                 if(error == nil) {
                                     print("success")
@@ -139,12 +163,6 @@ class addBets: UIViewController, UITextFieldDelegate {
                                     print("didn't get em coach")
                                 }
                                 
-                                //BetView.load()
-                                
-//                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                                let betView = storyboard.instantiateViewController(withIdentifier: "betView")
-//
-//                                self.navigationController?.popToViewController(betView, animated: true)
                             })
                             
  
@@ -175,9 +193,26 @@ class addBets: UIViewController, UITextFieldDelegate {
                             self.present(alertController, animated: true, completion: nil)
                             return
                         } else {
+                            var time = "fake"
+                            var count = 0
+                            for i in self.getMoreData.teams {
+                                if count % 2 == 0 {
+                                    if i == self.teamOneLabelAdd.text {
+                                        if count == 0 {
+                                            time = self.getMoreData.times[count]
+                                        } else {
+                                            time = self.getMoreData.times[count/2]
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                count += 1
+                            }
                             values["Bet"] = String(betTwo)
                             values["ForTeam"] = self.teamTwoLabelAdd.text
                             values["OpposingTeam"] = self.teamOneLabelAdd.text
+                            values["Time"] = time
                             self.currentUser?.getTokenWithCompletion({ (resulte) in
                                 
                                 useRef.setValue(values)
@@ -221,32 +256,6 @@ class addBets: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
-        /*
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-        //self.betRef.child("Bets").setValue(self.userName)
-                
-        if let worked = self.currentUser?.getTokenWithCompletion() {
-            
-            useRef.setValue(values)
-            /*
-            useRef.updateChildValues(values, withCompletionBlock: { (error, ref) in
-                if (error != nil) {
-                    print(error!)
-                    return
-                    
-                }
-                
-            })
-            */
-            
-            
-            
-        }
-            
-         sleep(1)
-         self.navigationController?.popViewController(animated: true)
-            }
- */
         }
  
         
